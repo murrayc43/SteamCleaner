@@ -10,7 +10,7 @@ using SteamCleaner.Analyzer.FileFinders;
 using SteamCleaner.Model;
 
 #endregion
-
+using System.Diagnostics;
 namespace SteamCleaner.Analyzer
 {
     public class AnalyzerService
@@ -69,7 +69,7 @@ namespace SteamCleaner.Analyzer
                     IEnumerable<string> paths = null;
                     if (analyzer.CheckExists())
                     {
-                        paths = analyzer.FindPaths();
+                        paths = analyzer.FindPaths();                      
                     }
                     if (paths == null || paths.Count() == 0)
                     {
@@ -113,6 +113,15 @@ namespace SteamCleaner.Analyzer
                 {
                     callback.Report(Tuple.Create(FormatError(finder, e), progress));
                     Console.WriteLine(e.Message);
+                }
+            }
+
+            //Remove any files that may be used by installed games so they are not deleted
+            foreach (FileInfo file in allFiles)
+            {
+                if (file.FullName.Contains(".wav"))
+                {
+                    Debug.WriteLine(">>> Removed file " + file);
                 }
             }
             return allFiles;

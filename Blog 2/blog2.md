@@ -1,0 +1,9 @@
+Blog 2:
+
+It was my goal for the second part of this Assignment to reach out to the community and to see if I could assist with the fixing of a bug. Originally, my goal was to write the fix and to create a pull request. Unfortunately, my time was extremely limited as I spent the majority of my time working on the final project as well as other course work. Either way, I decided to stick with my original goal to at least create the fix for one of the issues listed on Github.
+
+Looking on the issues page, I noticed that someone had created a ticket regarding deletion of important game files. After reading through the ticket, I realized that this issue was not only something that I had an idea on how to fix, it was something that I could test and verify since I also happened to own the game that was in question. This was what I decided to do for my third artifact.
+
+I downloaded a copy of the game that was causing the issue (Penumbra Overture) and ran SteamCleaner. Just as the ticket suggested, the cleaner picked up important files of the game all because the game stores it's files within the directory that most junk files are stored in. I went back to Github and informed those who read the ticket that I had tested and confirmed the issue. Additionally, I also posted a potential fix for said issue.
+
+Fixing this issue was my goal for my artifact 4 at this point. The idea to ignore important file types was a quick idea that came to mind, however it took me some time to go line by line to figure out where in the code directories and file locations were being stored and referenced. Once locating the function that dealt with this, before returning the list of junk files, I inserted some code to loop through the list and remove those files that are of important file types (.wav, .srt, .ogg, etc). In my artifact 4, I only show off the removal of .wav files as these files were the majority of files that were being incorrectly flagged.
